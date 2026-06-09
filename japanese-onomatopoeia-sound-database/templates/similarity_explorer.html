@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Similarity Explorer</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/similarity_explorer.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body data-current-role="{{ current_role }}">
+
+    <nav class="app-nav">
+      <a href="/" class="app-nav__brand"><img src="/static/icon.png" alt="Logo"> Japanese Onomatopoeia Database</a>
+      <div class="app-nav__links">
+        <a href="/" class="nav-btn nav-btn--home">🏠 Home</a>
+        <a href="/browse" class="nav-btn nav-btn--browse">📚 Browse</a>
+        {% if current_role == "admin" %}
+        <a href="/audio_augmentation" class="nav-btn nav-btn--aug">🎵 Augmentation</a>
+        {% endif %}
+        {% if current_role in ["researcher","admin"] %}
+        <a href="/feature_comparison" class="nav-btn nav-btn--feat">🔬 Features</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <h1 class="similarity-explorer-title">Onomatopoeia Similarity Graph</h1>
+
+    <!-- toolbar -->
+    <div id="toolbar">
+        <input id="graph-search-box" type="text" placeholder="Search node…">
+
+        {% if current_role == "admin" %}
+        <input id="graph-name" type="text" placeholder="Version name">
+        <button id="build-graph-btn"    class="btn btn-blue">Build Draft</button>
+        <button id="save-graph-btn"     class="btn btn-green">💾 Save Graph</button>
+        <button id="approve-graph-btn"  class="btn btn-teal">✔ Approve</button>
+        <button id="display-toggle-btn" class="btn btn-grey">Display</button>
+        <button id="delete-graph-btn"   class="btn btn-red"> Delete</button>
+        <select id="history-select"></select>
+        {% endif %}
+    </div>
+
+    <div id="update-status"></div>
+
+    {% if current_role == "admin" %}
+    <!-- admin version panel -->
+    <div id="version-panel">
+        <h3>Graph Versions</h3>
+        <table id="version-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Status</th><th>Displayed</th><th>Created</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- 3-D graph -->
+    <div id="graph-wrap">
+        <div id="edit-overlay">Orbit to explore · Click a node to play its sound</div>
+        <div id="label-container"></div>
+        <div id="graph-hint">
+            Drag to orbit &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp; Hover to highlight<br>
+            <span class="hint-pc1">━</span> PC1 &nbsp;
+            <span class="hint-pc2">━</span> PC2 &nbsp;
+            <span class="hint-pc3">━</span> PC3 &nbsp;&nbsp;
+            Edges: <span class="hint-edge-short">orange</span> = short (similar) &nbsp;
+                   <span class="hint-edge-long">blue</span> = long (dissimilar)
+        </div>
+        <!-- Three.js canvas is injected here by similarity-explorer.js -->
+    </div>
+
+    <!-- Axis legend — populated by JS once PCA data arrives -->
+    <div id="axis-legend">
+        <h3>3D Feature Space — Principal Component Axes</h3>
+        <div id="axis-legend-rows"><em class="axis-legend-loading">Loading axis descriptions…</em></div>
+    </div>
+
+    <script src="/static/js/similarity-explorer.js"></script>
+</body>
+</html>

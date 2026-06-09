@@ -1,0 +1,11 @@
+{
+  "mode": "local",
+  "port": 5000,
+  "admin_username": "admin",
+  "admin_password": "admin"
+}
+
+// mode options:
+//   "local"  — run against annotations.db (normal use)
+//   "test"   — wipe test DB, seed from test_dataset.csv, run against annotations.test.db
+//   "reset"  — delete both DBs + model + sounds, then exit (no app started)

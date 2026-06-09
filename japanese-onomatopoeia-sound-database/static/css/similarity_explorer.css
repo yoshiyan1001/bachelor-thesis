@@ -1,0 +1,188 @@
+/* ── version panel ── */
+#version-panel {
+  margin: 10px 16px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+#version-panel h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+#version-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+#version-table th,
+#version-table td {
+  border: 1px solid #dee2e6;
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#version-table th {
+  background: #f1f3f5;
+}
+
+#version-table tbody tr {
+  cursor: pointer;
+}
+
+#version-table tbody tr:hover {
+  background: #f0f4ff !important;
+}
+
+#version-table tbody tr.active-row {
+  background: #fffbe6 !important;
+  outline: 2px solid #fd7e14;
+}
+
+/* ── graph canvas ── */
+#graph-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: clamp(400px, 60vh, 700px);
+  background: #f5f7fa;
+}
+
+#graph-wrap canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#edit-overlay {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(40, 167, 69, 0.9);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#label-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#graph-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 12px;
+  color: #666;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 6px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1.7;
+}
+
+/* ── axis legend ── */
+#axis-legend {
+  margin: 16px 16px 0;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+#axis-legend h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.axis-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.axis-row-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.axis-tag {
+  font-weight: 700;
+  font-size: 13px;
+  min-width: 36px;
+}
+
+.axis-var {
+  color: #888;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.axis-desc {
+  color: #444;
+}
+
+.axis-explain {
+  color: #888;
+  font-size: 11px;
+  font-style: italic;
+  padding-left: 2px;
+}
+
+/* ── toolbar extras ── */
+#graph-name {
+  padding: 5px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 140px;
+}
+
+#history-select {
+  padding: 5px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ── page heading ── */
+.similarity-explorer-title {
+  margin: 12px 16px 4px;
+}
+
+/* ── graph-search-box width ── */
+#graph-search-box {
+  width: 200px;
+}
+
+/* ── graph hint colour spans ── */
+.hint-pc1       { color: #e74c3c; }
+.hint-pc2       { color: #2ecc71; }
+.hint-pc3       { color: #3498db; }
+.hint-edge-short { color: #e67e22; }
+.hint-edge-long  { color: #3498db; }
+
+/* ── axis legend loading state ── */
+.axis-legend-loading {
+  color: #aaa;
+}

@@ -1,0 +1,89 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filters select,
+.filters input[type="text"] {
+  padding: 6px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.filters button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+  background: white;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 7px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.card h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.tag {
+  display: inline-block;
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin-right: 4px;
+  font-size: 11px;
+}
+
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.audio-controls {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.play-btn {
+  padding: 4px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #4a90e2;
+  color: white;
+}
+
+.play-btn:hover {
+  background: #357abd;
+}

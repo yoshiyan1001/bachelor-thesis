@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>Researcher Registration</h2>
+      <p class="auth-subtitle">Researcher accounts require admin approval before access is granted.</p>
+      <form method="POST">
+        <label>Username
+          <input type="text" name="username" required>
+        </label>
+        <label>Email (optional)
+          <input type="email" name="email">
+        </label>
+        <label>Password
+          <input type="password" name="password" required>
+        </label>
+        <label>User Type
+          <input type="text" value="Researcher (requires admin approval)" disabled>
+          <input type="hidden" name="role" value="researcher">
+        </label>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        {% if success %}<div class="success">{{ success }}</div>{% endif %}
+        <button type="submit">Register</button>
+      </form>
+      <p class="auth-footer">Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </div>
+</body>
+</html>

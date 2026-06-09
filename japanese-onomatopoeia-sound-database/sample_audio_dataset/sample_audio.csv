@@ -1,0 +1,8 @@
+sound_file,label,description,category
+sample_audio/OtoLogic_mosquito.mp3, puun, mosquito sound, Giseigo
+sample_audio/OtoLogic_ding.mp3, chiin, bell sound, Giongo
+sample_audio/OtoLogic_dizzy.mp3, piyo-piyo, bird sound, Giseigo
+sample_audio/OtoLogic_impact.mp3, doon, explosion sound, Giongo
+sample_audio/OtoLogic_thunder1.mp3, goro-goro, thunder sound, Giongo
+sample_audio/OtoLogic_rain3.mp3, za-za, rainy sound, Giongo
+sample_audio/OtoLogic_wind1.mp3, hyuu, strong wind sound, Giongo

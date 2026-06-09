@@ -1,0 +1,205 @@
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.upload-section {
+  border: 2px dashed #ddd;
+  padding: 14px 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #fafafa;
+}
+
+.upload-section:hover {
+  border-color: #4a90e2;
+  background: #f0f8ff;
+}
+
+.upload-section h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.upload-section p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #888;
+}
+
+.file-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.file-picker input[type="file"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.file-picker-label {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.file-picker-name {
+  color: #666;
+  font-size: 14px;
+}
+
+.augmentation-options {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.option-group {
+  margin: 15px 0;
+}
+
+.option-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.btn:hover {
+  background: #357abd;
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.results {
+  margin-top: 30px;
+  padding: 20px;
+  background: #e8f5e8;
+  border-radius: 8px;
+  display: none;
+}
+
+.audio-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 10px;
+  margin: 6px 0;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.audio-info {
+  flex: 1;
+  min-width: 120px;
+  font-size: 13px;
+}
+
+.audio-info small {
+  font-size: 11px;
+}
+
+.audio-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.audio-controls audio {
+  height: 32px;
+  width: 200px;
+}
+
+.progress {
+  display: none;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a90e2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  color: #d32f2f;
+  background: #ffebee;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 20px 0;
+  display: none;
+}
+
+.augmentation-options--no-top-margin {
+  margin-top: 0;
+}
+
+.augment-generate {
+  text-align: center;
+}
+
+.augmentation-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.augmentation-options__title {
+  margin-top: 0;
+}

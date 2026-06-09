@@ -1,0 +1,129 @@
+#waveform,
+#predictWaveform {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  height: 128px;
+  border-radius: 4px;
+}
+
+.phonetic-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+
+.phonetic-result .label {
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.phonetic-result .play-btn {
+  padding: 4px 8px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#trainButton {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 13px 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 16px 0;
+}
+
+#trainButton:hover {
+  background: #357abd;
+}
+
+/* ── Annotation form ── */
+#annotationForm {
+  margin-bottom: 16px;
+  max-width: 500px;
+}
+
+.annotation-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.annotation-field span {
+  min-width: 140px;
+}
+
+.annotation-field input[type="text"],
+.annotation-field select {
+  padding: 6px 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.annotation-field input[type="text"] {
+  flex: 1;
+  margin-left: 13px;
+}
+
+.annotation-field select {
+  width: 200px;
+  margin-left: 20px;
+}
+
+.annotation-field--description input {
+  margin-left: 20px;
+}
+
+/* ── Annotation controls ── */
+.file-picker--spaced {
+  margin-top: 8px;
+}
+
+#annotationControls {
+  display: none;
+  margin-top: 8px;
+}
+
+#saveAnnotationBtn {
+  margin-left: 10px;
+}
+
+/* ── Predict / search buttons ── */
+.form-submit-btn {
+  margin-top: 8px;
+  padding: 6px 14px;
+}
+
+#playPredictedBtn {
+  display: none;
+  margin-top: 6px;
+}
+
+#predictionResult {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#phoneticSearchResults {
+  margin-top: 10px;
+}
+
+/* ── Train output ── */
+#trainOutput {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}

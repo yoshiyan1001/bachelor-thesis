@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio Augmentation - Japanese Onomatopoeia</title>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/audio_augmentation.css">
+</head>
+<body>
+
+    <nav class="app-nav">
+      <a href="/" class="app-nav__brand"><img src="/static/icon.png" alt="Logo"> Japanese Onomatopoeia Database</a>
+      <div class="app-nav__links">
+        <a href="/" class="nav-btn nav-btn--home">🏠 Home</a>
+        <a href="/browse" class="nav-btn nav-btn--browse">📚 Browse</a>
+        <a href="/feature_comparison" class="nav-btn nav-btn--feat">🔬 Features</a>
+        <a href="/similarity_explorer" class="nav-btn nav-btn--graph">🔍 Graph</a>
+      </div>
+    </nav>
+
+    <div class="page-wrap page-wrap--narrow">
+    <div class="container">
+        <h1>🎵 Audio Augmentation Tool</h1>
+        <p class="augmentation-intro">
+            Upload an audio file and create multiple augmented versions for better machine learning training
+        </p>
+
+        <div class="upload-section">
+            <h3>📁 Upload Audio File</h3>
+            <p>Supported formats: MP3, WAV</p>
+            <div class="file-picker">
+                <label for="audioFile" class="file-picker-label">Choose audio file</label>
+                <input type="file" id="audioFile" accept=".mp3,.wav" class="file-input">
+                <span class="file-picker-name" id="audioFileName">No file chosen</span>
+            </div>
+        </div>
+
+        <div class="augmentation-options augmentation-options--no-top-margin">
+            <h3 class="augmentation-options__title">⚙️ Augmentation Options</h3>
+            <p>Select which types of augmentations to apply:</p>
+            
+            <div class="option-group">
+                <label>Pitch Variations:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="pitch_shift" value="pitch_shift" checked>
+                        <label for="pitch_shift">Pitch Shift (±2, ±1 semitones)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <label>Speed Variations:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="time_stretch" value="time_stretch" checked>
+                        <label for="time_stretch">Time Stretch (0.8x, 1.2x)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <label>Noise Variations:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="noise_injection" value="noise_injection" checked>
+                        <label for="noise_injection">Noise Injection (3 levels)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <label>Volume Variations:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="volume_change" value="volume_change" checked>
+                        <label for="volume_change">Volume Change (0.5x, 1.5x, 2.0x)</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="augment-generate">
+            <button id="augmentBtn" class="btn">🚀 Generate Augmented Audio</button>
+        </div>
+
+        <div class="progress" id="progress">
+            <div class="spinner"></div>
+            <p>Processing audio... This may take a few moments.</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="results" id="results">
+            <h3>✨ Generated Augmented Files</h3>
+            <div id="originalFile"></div>
+            <div id="augmentedFiles"></div>
+        </div>
+    </div><!-- /.container -->
+    </div><!-- /.page-wrap -->
+
+    <script src="/static/js/audio-augmentation.js"></script>
+</body>
+</html>

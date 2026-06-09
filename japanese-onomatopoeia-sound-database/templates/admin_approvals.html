@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pending Approvals</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/admin_approvals.css">
+</head>
+<body>
+
+  <nav class="app-nav">
+    <a href="/" class="app-nav__brand">
+      <img src="/static/icon.png" alt="Logo"> Japanese Onomatopoeia Database
+    </a>
+    <div class="app-nav__links">
+      <a href="/" class="nav-btn nav-btn--home">🏠 Home</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <h2>Pending Researcher Approvals</h2>
+    {% if not pending %}
+      <p>No pending requests.</p>
+    {% else %}
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Requested</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          {% for u in pending %}
+          <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.role }}</td>
+            <td>{{ u.created_at }}</td>
+            <td>
+              <form method="POST" action="/admin/approvals/{{ u.id }}/approve">
+                <button type="submit" class="approve-btn">Approve</button>
+              </form>
+              <form method="POST" action="/admin/approvals/{{ u.id }}/reject">
+                <button type="submit" class="reject-btn">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browse Onomatopoeia</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/browse.css">
+</head>
+<body data-is-admin="{{ 'true' if current_role == 'admin' else 'false' }}">
+
+  <nav class="app-nav">
+    <a href="/" class="app-nav__brand">
+      <img src="/static/icon.png" alt="Logo"> Japanese Onomatopoeia Database
+    </a>
+    <div class="app-nav__links">
+      <a href="/" class="nav-btn nav-btn--home">🏠 Home</a>
+      {% if current_role == "admin" %}
+      <a href="/audio_augmentation" class="nav-btn nav-btn--aug">🎵 Augmentation</a>
+      {% endif %}
+      {% if current_role in ["researcher", "admin"] %}
+      <a href="/feature_comparison" class="nav-btn nav-btn--feat">🔬 Features</a>
+      <a href="/similarity_explorer" class="nav-btn nav-btn--graph">🔍 Graph</a>
+      {% endif %}
+    </div>
+    <span class="app-nav__user">
+      <strong>{{ current_role }}</strong>{% if current_user %} ({{ current_user.username }}){% endif %}
+      &nbsp;·&nbsp;<a href="/login">Login</a> | <a href="/logout">Logout</a>
+      {% if current_role == "admin" %} | <a href="/admin/approvals">Approvals</a>{% endif %}
+    </span>
+  </nav>
+
+  <div class="page-wrap">
+    <h1>Browse Onomatopoeia</h1>
+    <div class="filters">
+      <input type="text" id="q" placeholder="Search text…">
+      <label>Word <select id="labelFilter"></select></label>
+      <label>Category <select id="categoryFilter"></select></label>
+      <button id="applyBtn">Apply</button>
+    </div>
+    <div id="grid" class="grid"></div>
+    <div id="pagination" class="pagination"></div>
+  </div>
+
+  <script src="/static/js/browse.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "mode": "test",
+  "reset_mode": "test",
+  "port": 5000,
+  "admin_username": "admin",
+  "admin_password": "admin"
+}

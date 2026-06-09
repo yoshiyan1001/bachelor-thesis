@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onomatopoeia Annotator</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <script src="/static/js/wavesurfer.min.js"></script>
+  <script src="/static/js/scripts.js"></script>
+</head>
+<body>
+
+  <nav class="app-nav">
+    <a href="/" class="app-nav__brand">
+      <img src="/static/icon.png" alt="Logo"> Japanese Onomatopoeia Database
+    </a>
+    <div class="app-nav__links">
+      <a href="/browse" class="nav-btn nav-btn--browse">📚 Browse</a>
+      {% if current_role == "admin" %}
+      <a href="/audio_augmentation" class="nav-btn nav-btn--aug">🎵 Augmentation</a>
+      {% endif %}
+      {% if current_role in ["researcher", "admin"] %}
+      <a href="/feature_comparison" class="nav-btn nav-btn--feat">🔬 Features</a>
+      <a href="/similarity_explorer" class="nav-btn nav-btn--graph">🔍 Graph</a>
+      {% endif %}
+    </div>
+    <span class="app-nav__user">
+      <strong>{{ current_role }}</strong>{% if current_user %} ({{ current_user.username }}){% endif %}
+      &nbsp;·&nbsp;<a href="/login">Login</a> | <a href="/logout">Logout</a>
+      {% if current_role == "admin" %} | <a href="/admin/approvals">Approvals</a>{% endif %}
+    </span>
+  </nav>
+
+  <div class="page-wrap">
+
+    {% if current_role == "admin" %}
+    <div class="section">
+      <h2>Expand the Database</h2>
+      <div id="annotationForm">
+  
+  <!-- Onomatopoeia Word -->
+  <label class="annotation-field">
+    <span>Onomatopoeia word: </span>
+    <input type="text" id="annotationLabel" placeholder="e.g. gorogoro">
+  </label>
+
+  <!-- Description -->
+  <label class="annotation-field annotation-field--description">
+    <span>Description: <small>(describe this audio)</small></span>
+    <input type="text" id="annotationDescription" placeholder="e.g. rolling thunder">
+  </label>
+
+  <!-- Category (Width controlled) -->
+  <label class="annotation-field">
+    <span>Category:</span>
+    <select id="categorySelect"></select>
+  </label>
+  
+</div>
+      <div class="file-picker file-picker--spaced">
+        <label for="annotateAudioFile" class="file-picker-label">Choose audio file</label>
+        <input type="file" id="annotateAudioFile" accept=".wav,.mp3">
+        <span class="file-picker-name" id="annotateAudioFileName">No file chosen</span>
+      </div>
+      <div id="waveform"></div>
+      <div id="annotationControls">
+        <button id="playPauseBtn">Play</button>
+        <button id="saveAnnotationBtn" type="button">Submit</button>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="section">
+      <h2>Predict Onomatopoeia from Sound File</h2>
+      <form id="predictForm">
+        <div class="file-picker">
+          <label for="audioFile" class="file-picker-label">Choose audio file</label>
+          <input type="file" id="audioFile" accept=".wav,.mp3">
+          <span class="file-picker-name" id="audioFileName">No file chosen</span>
+        </div>
+        <button type="submit" class="form-submit-btn">Predict</button>
+      </form>
+      <div id="predictWaveform"></div>
+      <button id="playPredictedBtn">Play Uploaded Audio</button>
+      <div id="predictionResult"></div>
+    </div>
+
+    <div class="section">
+      <h2>Phonetic Similarity Search</h2>
+      <form id="phoneticSearchForm">
+        <div class="file-picker">
+          <label for="phoneticAudioFile" class="file-picker-label">Choose audio file</label>
+          <input type="file" id="phoneticAudioFile" accept=".wav,.mp3">
+          <span class="file-picker-name" id="phoneticAudioFileName">No file chosen</span>
+        </div>
+        <button type="submit" class="form-submit-btn">Search</button>
+      </form>
+      <div id="phoneticSearchResults"></div>
+    </div>
+
+    {% if current_role == "admin" %}
+    <div class="section">
+      <button id="trainButton">Train Model</button>
+      <pre id="trainOutput"></pre>
+    </div>
+    {% endif %}
+
+    <div class="section">
+      <p>To search the database use the <a href="/browse">📚 Browse</a> page.</p>
+    </div>
+  </div>
+
+</body>
+</html>

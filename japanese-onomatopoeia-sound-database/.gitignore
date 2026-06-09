@@ -1,0 +1,8 @@
+# .gitignore
+__pycache__/
+*.pyc
+
+static/sounds/
+static/models/
+
+*.db
